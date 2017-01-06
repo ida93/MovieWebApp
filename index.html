@@ -1,0 +1,109 @@
+﻿<html>
+
+<head>
+    <title>Movie Web App</title>
+</head>
+
+<body>
+    <div ng-app="mainApp">
+        <div class="container">
+            <br />
+            <br />
+            <ul class="nav nav-tabs">
+                <li><a href="#movies" class="myClass">Movies</a></li>
+                <li><a href="#tvshows" class="myClass">Tv shows</a></li>
+                <li></li>
+            </ul>
+
+           
+        </div>
+        <br />
+
+            <div ng-view></div>
+        
+            <script type="text/ng-template" id="movies.htm">
+                <div ng-controller="DataController">
+                    <div class="container">
+                        <div class="col-md-8 col-md-offset-2">
+                            <input type="text" ng-model="search" placeholder="Search" name="search" id="search" ng-init="search=''" />
+                            <div class="row">
+                                <div class="col-md-6 poster">
+                                    <table class="table">
+                                        <tr ng-repeat="i in title.results | limitTo:3" ng-show="search.length>0" ng-hide="search.length<0" class="warning">
+                                            <td class="list-group-item list-group-item-info"> {{i.original_title}} </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+                        <br />
+
+
+                        <div ng-repeat="movie in movies.results | limitTo:10" class="col-sm-12 col-lg-3 col-md-6">
+                            <div class="thumbnail">
+                                <img class="poster" ng-src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt="" />
+                                <div class="caption text-center">
+                                    <h4>{{movie.original_title}}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </script>
+        
+       
+
+            <script type="text/ng-template" id="tvshows.htm">
+                <div ng-controller="DataController">
+                    <div class="container">
+                        <div class="col-md-8 col-md-offset-2">
+                            <input type="text" ng-model="search" placeholder="Search" name="search" id="search" ng-init="search=''" />
+                            <div class="row">
+                                <div class="col-md-6 poster">
+                                    <table class="table">
+                                        <tr ng-repeat="i in title2.results | limitTo:3" ng-show="search.length>0" ng-hide="search.length<0" class="warning">
+                                            <td class="list-group-item list-group-item-info"> {{i.original_name}} </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+                        <br />
+
+
+                        <div ng-repeat="tv in tvShows.results | limitTo:10" class="col-sm-12 col-lg-3 col-md-6">
+                            <div class="thumbnail">
+                                <img class="poster" ng-src="https://image.tmdb.org/t/p/w500/{{tv.poster_path}}" alt="" />
+                                <div class="caption text-center">
+                                    <h4>{{tv.name}}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </script>
+        <div class="container">
+            <button onclick="history.back()" class="col-sm-2 btn btn-info bottomClass">Back</button>
+        </div>
+        </div>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js"></script>
+        <script type="text/javascript" src="first.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script type="text/javascript" src="first.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="footer.css" />
+    <footer class="footer-basic-centered">
+        <p class="footer-company-name">Ćehajić Aida &copy; 2016</p>
+    </footer>
+</body>
+</html>
